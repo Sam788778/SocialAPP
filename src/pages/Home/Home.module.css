@@ -1,0 +1,42 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, 
+    rgba(34, 193, 195, 0.1) 0%, 
+    rgba(253, 187, 45, 0.1) 100%),
+    linear-gradient(135deg, 
+    #1a2980 0%, 
+    #26d0ce 100%);
+  padding: 20px;
+}
+
+.text {
+  margin: auto auto;
+  font-size: 70px;
+  font-weight: 800;
+  background: linear-gradient(45deg, 
+    #ff9a9e 0%, 
+    #fad0c4 20%, 
+    #fbc2eb 40%, 
+    #a6c1ee 60%, 
+    #a18cd1 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: gradientShift 8s ease infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    #0f2027 0%, 
+    #203a43 50%, 
+    #2c5364 100%);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}

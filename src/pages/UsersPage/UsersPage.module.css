@@ -1,0 +1,11 @@
+.UsersPage {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  background: linear-gradient(135deg, 
+    #614385 0%, 
+    #516395 50%, 
+    #7b4397 100%);
+  min-height: calc(100vh - 80px);
+}
