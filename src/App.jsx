@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 
+import Layout from './components/Layout/Layout';
+import Home from './pages/Home/Home';
 import UsersPage from './pages/UsersPage/UsersPage';
 
 import './App.css';
-import Layout from './components/Layout/Layout';
 
 function App() {
 
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path='/users' element={<UsersPage />} />
+          <Route index element={<Home />} />
+          <Route path='/Userprofile' element={<UsersPage />}/>
         </Route>
       </Routes>
     </div>

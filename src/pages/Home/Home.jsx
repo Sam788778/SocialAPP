@@ -1,14 +1,10 @@
 import React from 'react'
 import styles from './Home.module.css'
-import Nav from '../../components/Nav/Nav.jsx'
-import Footer from '../../components/Footer/Footer.jsx'
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <Nav />
-      <h1 className={styles.text}>Welcome to Instagram</h1>
-      <Footer />
+      <h1 className={styles.text}>WELCOME TO MY SOCIAL APP</h1>
     </div>
   )
 }

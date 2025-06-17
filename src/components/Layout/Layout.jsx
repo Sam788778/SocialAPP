@@ -1,13 +1,15 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import styles from './Layout.module.css'
-import Home from '../../pages/Home/Home'
+import Nav from '../Nav/Nav.jsx'
+import Footer from '../Footer/Footer.jsx'
 
 const Layout = () => {
     return (
         <div className={styles.layout}>
+            <Nav />
             <Outlet />
-            <Home />
+            <Footer />
         </div>
     )
 }
