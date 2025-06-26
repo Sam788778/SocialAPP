@@ -4,6 +4,8 @@ import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import UsersPage from './pages/UsersPage/UsersPage';
 
+import UserProfile from './pages/UserProfile/UserProfile';
+
 import './App.css';
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route path='/users' element={<UsersPage />} />
           <Route index element={<Home />} />
-          <Route path='/Userprofile' element={<UsersPage />}/>
+          <Route path='/UserProfile/:id' element={<UserProfile />} />
         </Route>
       </Routes>
     </div>

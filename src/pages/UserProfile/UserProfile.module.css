@@ -1,0 +1,43 @@
+.userProfile {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, 
+    #1f1c2c 0%, 
+    #928dab 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Name {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, 
+    #00dbde 0%, 
+    #fc00ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s ease-in-out infinite alternate;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .Name {
+    font-size: 32px;
+  }
+  
+  .profileCard {
+    padding: 20px;
+  }
+}

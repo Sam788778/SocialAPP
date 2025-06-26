@@ -3,10 +3,10 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   padding: 40px;
-  background: linear-gradient(135deg, 
-    #614385 0%, 
-    #516395 50%, 
-    #7b4397 100%);
+  background: linear-gradient(135deg,
+      #614385 0%,
+      #516395 50%,
+      #7b4397 100%);
   min-height: calc(100vh - 80px);
 }
 
@@ -30,19 +30,104 @@
   height: 170px;
 }
 
-.loader:before , .loader:after{
+.loader:before,
+.loader:after {
   content: '';
   border-radius: 50%;
   position: absolute;
   inset: 0;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
 }
+
 .loader:after {
   box-shadow: 0 2px 0 #FF3D00 inset;
   animation: rotate 2s linear infinite;
 }
 
 @keyframes rotate {
-  0% {  transform: rotate(0)}
-  100% { transform: rotate(360deg)}
+  0% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 0 0 calc(10% - 8px);
+  box-sizing: border-box;
+}
+
+.pagination .btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 16px;
+}
+
+.pagination .btn[aria-current="true"],
+.pagination .btn.active {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(245, 87, 108, 0.6);
+}
+
+.pagination .prev,
+.pagination .next {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  font-size: 18px;
+  padding: 0 15px;
+  flex: none;
+}
+
+.pagination button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pagination button:active {
+  transform: translateY(1px);
+}
+
+.pagination button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform 0.4s ease;
+}
+
+.pagination button:hover::after {
+  transform: translateX(100%) skewX(-15deg);
 }
