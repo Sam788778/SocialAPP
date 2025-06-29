@@ -1,15 +1,16 @@
 .profileCard {
-  background: linear-gradient(145deg, 
-    rgba(255, 255, 255, 0.15) 0%, 
-    rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(12px);
   border-radius: 20px;
-  padding: 30px;
+  padding: 25px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  max-width: 600px;
-  margin: 0 auto;
-  transition: all 0.4s ease;
+  max-width: 500px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+  color: #fff;
 }
 
 .profileCard:hover {
@@ -18,47 +19,73 @@
 }
 
 .profileCard img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.3);
   display: block;
   margin: 0 auto 20px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .profileCard p {
-  margin: 12px 0;
+  margin: 10px 0;
   padding: 8px 15px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 8px;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .profileCard h3 {
   text-align: center;
-  margin: 25px 0 15px;
-  background: linear-gradient(90deg, 
-    #ff8a00 0%, 
-    #e52e71 100%);
+  margin: 20px 0 15px;
+  background: linear-gradient(90deg,
+      #ff8a00 0%,
+      #e52e71 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .contactItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
 }
 
 .contactItem::before {
   content: "•";
   color: #ff8a00;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.logOut {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background: linear-gradient(90deg,
+      #ff4d4d 0%,
+      #d62424 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logOut:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
 }

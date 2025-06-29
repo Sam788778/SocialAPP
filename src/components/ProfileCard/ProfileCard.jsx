@@ -1,11 +1,23 @@
 import React from 'react'
+
+import { Navigate } from 'react-router-dom';
+import { logOutThunkCreator } from '../../store/reducers/loginReduser';
+import { useDispatch } from 'react-redux';
+
 import styles from './ProfileCard.module.css'
 import userIMG from '../../assets/user.png'
 
 const ProfileCard = ({ profile }) => {
     if (!profile) return null;
 
+    const dispatch = useDispatch()
+
     const contacts = profile.contacts;
+
+    const LogOut = () => {
+        dispatch(logOutThunkCreator())
+        return <Navigate to={'/'} />
+    }
 
     return (
         <div className={styles.profileCard}>
@@ -24,6 +36,8 @@ const ProfileCard = ({ profile }) => {
             <div className={styles.contactItem}>Website: {contacts?.website || '---'}</div>
             <div className={styles.contactItem}>YouTube: {contacts?.youtube || '---'}</div>
             <div className={styles.contactItem}>MainLink: {contacts?.mainLink || '---'}</div>
+
+            <button className={styles.logOut} onClick={LogOut}>Delete Account</button>
         </div>
     );
 };

@@ -16,7 +16,8 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route path='/users' element={<UsersPage />} />
           <Route index element={<Home />} />
-          <Route path='/UserProfile/:id' element={<UserProfile />} />
+          <Route path='/userprofile/:id' element={<UserProfile />} />
+          <Route path='/login' element={<Home />}/>
         </Route>
       </Routes>
     </div>
