@@ -50,6 +50,7 @@ export const logOutThunkCreator = () => {
       .then(() => {
         localStorage.removeItem('userId')
         localStorage.removeItem('profile')
+        localStorage.removeItem('status')
         dispatch(logOutAC())
       })
   }

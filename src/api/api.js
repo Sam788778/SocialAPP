@@ -29,7 +29,13 @@ export const userAPI = {
     formData.append('file', file)
     return instance.put(`/profile/photo`, formData)
   },
-  getStatus(userId){
+  getStatus(userId) {
     return instance.get(`/profile/status/${userId}`)
+  },
+  UpdateStatus(status = '') {
+    return instance.put('/profile/status', { status })
+  },
+  UpdateProfile(Profile = {}) {
+    return instance.put('/profile', Profile)
   }
 };
