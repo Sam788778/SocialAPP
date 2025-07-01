@@ -30,14 +30,3 @@
     background-position: 100% 50%;
   }
 }
-
-/* Адаптивные стили */
-@media (max-width: 768px) {
-  .Name {
-    font-size: 32px;
-  }
-  
-  .profileCard {
-    padding: 20px;
-  }
-}
