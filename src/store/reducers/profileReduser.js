@@ -73,14 +73,4 @@ export const UpdateStatusThunkCreator = (status, id) => {
     }
 }
 
-export const UpdateProfileThunkCreator = (Profile, id) => {
-    return (dispatch) => {
-        userAPI.UpdateProfile(Profile)
-            .then((res) => {
-                console.log(res.data)
-                dispatch(getProfileThunkCreator(id))
-            })
-    }
-}
-
 export { profileReducer, getProfileAC, getProfileThunkCreator };

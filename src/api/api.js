@@ -34,8 +34,5 @@ export const userAPI = {
   },
   UpdateStatus(status = '') {
     return instance.put('/profile/status', { status })
-  },
-  UpdateProfile(Profile = {}) {
-    return instance.put('/profile', Profile)
   }
 };
