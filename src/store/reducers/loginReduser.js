@@ -2,11 +2,9 @@ import { userAPI } from "../../api/api"
 
 const LOGIN = 'LOGIN'
 const LOG_OUT = 'LOG_OUT'
-const SET_CAPTCHA_URL = 'SET_CAPTCHA_URL'
 
 const initState = {
-  userId: null,
-  captchaURL: null
+  userId: localStorage.getItem('userId') || null
 }
 
 const loginReduser = (state = initState, action) => {
@@ -22,11 +20,6 @@ const loginReduser = (state = initState, action) => {
         ...state,
         userId: null
       }
-    case SET_CAPTCHA_URL:
-      return {
-        ...state,
-        captchaURL: action.payload
-      }
     default:
       return state
   }
@@ -34,8 +27,6 @@ const loginReduser = (state = initState, action) => {
 
 const loginAC = (data) => ({ type: LOGIN, payload: data })
 const logOutAC = (data) => ({ type: LOG_OUT, payload: data })
-const captchaAC = (data) => ({ type: SET_CAPTCHA_URL, payload: data })
-
 
 export const loginThunkCreator = (body) => {
   return (dispatch) => {
@@ -47,13 +38,7 @@ export const loginThunkCreator = (body) => {
           dispatch(loginAC(userId));
           console.log(userId)
         } else {
-          if (res.data.resultCode === 10) {
-            userAPI.Captcha().then((captchaRes) => {
-              const captchaUrl = captchaRes.data.url;
-              console.log(captchaUrl)
-              dispatch(captchaAC(captchaUrl));
-            });
-          }
+          console.error(res.data.messages?.[0] || "Login failed");
         }
       });
   };
@@ -64,6 +49,7 @@ export const logOutThunkCreator = () => {
     userAPI.LogOut()
       .then(() => {
         localStorage.removeItem('userId')
+        localStorage.removeItem('profile')
         dispatch(logOutAC())
       })
   }

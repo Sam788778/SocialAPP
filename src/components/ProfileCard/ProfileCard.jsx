@@ -1,28 +1,36 @@
 import React from 'react'
 
-import { Navigate } from 'react-router-dom';
-import { logOutThunkCreator } from '../../store/reducers/loginReduser';
-import { useDispatch } from 'react-redux';
-
 import styles from './ProfileCard.module.css'
 import userIMG from '../../assets/user.png'
+import { useDispatch } from 'react-redux'
+import { ChangePhotoThunkCreator } from '../../store/reducers/profileReduser';
 
-const ProfileCard = ({ profile }) => {
-    if (!profile) return null;
-
+const ProfileCard = ({ profile, id, showInput }) => {
     const dispatch = useDispatch()
 
+    if (!profile) return null;
     const contacts = profile.contacts;
 
-    const LogOut = () => {
-        dispatch(logOutThunkCreator())
-        return <Navigate to={'/'} />
+    const ChangePhoto = (e) => {
+        const files = e.target.files[0]
+        dispatch(ChangePhotoThunkCreator(files, id))
     }
 
     return (
         <div className={styles.profileCard}>
             <img src={profile.photos?.large || userIMG} alt="User" />
-
+            {
+                showInput && (
+                    <label className={styles.fileLabel}>
+                        Change Photo
+                        <input
+                            className={styles.file}
+                            type="file"
+                            onChange={ChangePhoto}
+                        />
+                    </label>
+                )
+            }
             <p>Status: {profile.aboutMe || 'No status'}</p>
             <p>Looking for a job: {profile.lookingForAJob ? 'Yes' : 'No'}</p>
             <p>Job Description: {profile.lookingForAJobDescription || 'No description'}</p>
@@ -36,8 +44,6 @@ const ProfileCard = ({ profile }) => {
             <div className={styles.contactItem}>Website: {contacts?.website || '---'}</div>
             <div className={styles.contactItem}>YouTube: {contacts?.youtube || '---'}</div>
             <div className={styles.contactItem}>MainLink: {contacts?.mainLink || '---'}</div>
-
-            <button className={styles.logOut} onClick={LogOut}>Delete Account</button>
         </div>
     );
 };

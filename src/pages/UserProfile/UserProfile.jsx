@@ -24,12 +24,16 @@ const UserProfile = () => {
     return <Navigate to="/" replace />
   }
 
+  const isOwner = id === String(userId)
+
   return (
     <div className={styles.userProfile}>
       <h1 className={styles.Name}>
-        {profile?.fullName || 'User Profile'}
+        {
+          isOwner ? 'MyProfile' : profile?.fullName
+        }
       </h1>
-      <ProfileCard profile={profile} />
+      <ProfileCard profile={profile} id={id} showInput={isOwner}/>
     </div>
   )
 }

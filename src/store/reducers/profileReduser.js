@@ -1,13 +1,23 @@
-import { socialAPI, userAPI } from "../../api/api";
+import { userAPI } from "../../api/api";
 
 const GET_PROFILE = 'GET_PROFILE';
 
+let local = null;
+try {
+    const raw = localStorage.getItem('profile');
+    local = raw ? JSON.parse(raw) : null;
+} catch (e) {
+    console.error(e);
+    localStorage.removeItem('profile');
+    local = null;
+}
+
 const initState = {
-    profile: null,   
+    profile: local,
 }
 
 const profileReducer = (state = initState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case GET_PROFILE: {
             return {
                 ...state,
@@ -19,14 +29,25 @@ const profileReducer = (state = initState, action) => {
     }
 }
 
-const getProfileAC = (profile) => ({type: GET_PROFILE, payload: profile})
+const getProfileAC = (profile) => ({ type: GET_PROFILE, payload: profile })
 
 const getProfileThunkCreator = (id) => {
     return (dispatch) => {
         userAPI.getUser(id)
             .then((res) => {
                 console.log(res.data);
+                localStorage.setItem('profile', JSON.stringify(res.data))
                 dispatch(getProfileAC(res.data));
+            })
+    }
+}
+
+export const ChangePhotoThunkCreator = (file, id) => {
+    return (dispatch) => {
+        userAPI.ChangePhoto(file)
+            .then((res) => {
+                console.log(res)
+                dispatch(getProfileThunkCreator(id))
             })
     }
 }

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { Field, Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginThunkCreator } from '../../store/reducers/loginReduser';
 import LoginSchema from '../../YUP.JS';
+
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+
 import styles from './Login.module.css';
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false)
+
     const dispatch = useDispatch();
-    const captchaUrl = useSelector((state) => state.login.captchaURL);
-    console.log(captchaUrl)
 
     const login = (values) => {
         dispatch(loginThunkCreator(values));
@@ -20,7 +25,6 @@ const Login = () => {
                 initialValues={{
                     email: '',
                     password: '',
-                    captcha: '',
                 }}
                 validationSchema={LoginSchema}
                 onSubmit={(values) => login(values)}
@@ -43,22 +47,20 @@ const Login = () => {
                             <Field
                                 name="password"
                                 placeholder="Password"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 className={styles.inputField}
                             />
+                            <button
+                                type='button'
+                                className={`${styles.bttn} ${showPassword ? styles.toggled : ''}`}
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <IoEyeOutline /> : <IoEyeOffOutline style={{ color: ' #6a11cb' }} />}
+                            </button>
                             {errors.password && touched.password && (
                                 <div className={styles.error}>{errors.password}</div>
                             )}
                         </div>
-                        {captchaUrl && (
-                            <div className={styles.fieldContainer}>
-                                <img src={captchaUrl} alt="captcha" />
-                                <Field
-                                    name="captcha"
-                                    className={styles.inputField}
-                                />
-                            </div>
-                        )}
 
                         <button type="submit" className={styles.submitButton}>
                             Login
